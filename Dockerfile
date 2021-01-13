@@ -13,7 +13,7 @@ RUN mvn -f /home/app/pom.xml clean package
 #
 # Package stage
 #
-FROM openjdk:11-jre-slim
+#FROM openjdk:11-jre-slim
 COPY --from=build /home/app/target/grid-utils.jar /usr/local/lib/grid-utils.jar
 
 # Start with a base image containing Java runtime
