@@ -4,12 +4,10 @@
 FROM maven:3.6.0-jdk-11-slim AS build
 COPY src /home/app/src
 COPY pom.xml /home/app
-WORKDIR /home/app
 RUN mvn -f /home/app/pom.xml clean package
 
-#
-# Package stage
-#
+ENTRYPOINT ["java","-jar","/home/app/target/grid-utils.jar"]
+
 #
 # Package stage
 #
@@ -32,4 +30,4 @@ RUN mvn -f /home/app/pom.xml clean package
 #WORKDIR app
 
 # Run the jar file
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/home/app/target/grid-utils.jar"]
+#ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/home/app/target/grid-utils.jar"]
