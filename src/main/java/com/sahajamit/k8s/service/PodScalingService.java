@@ -59,6 +59,8 @@ public class PodScalingService {
     private void init() throws NoSuchAlgorithmException, KeyManagementException {
         logger.info("Grid Console URL: {}", gridUrl);
         logger.info("K8s API URL: {}", k8sApiUrl);
+        logger.info("K8s token: ", k8sToken);
+
         httpClient = (new OkHttpClient()).setHostnameVerifier(new HostnameVerifier() {
             @Override
             public boolean verify(String hostname, SSLSession session) {
