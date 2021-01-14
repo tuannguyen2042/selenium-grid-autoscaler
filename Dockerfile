@@ -9,7 +9,7 @@ RUN mvn -f /home/app/pom.xml clean package
 #
 # Package stage
 #
-FROM openjdk:11-jre-slim
+FROM adoptopenjdk/openjdk8:alpine-slim
 COPY --from=build /home/app/target/*.jar /usr/local/lib/grid-utils.jar
 
 # Start with a base image containing Java runtime
