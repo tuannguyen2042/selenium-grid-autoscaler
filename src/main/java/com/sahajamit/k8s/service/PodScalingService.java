@@ -25,8 +25,8 @@ public class PodScalingService {
     private static final TrustManager[] UNQUESTIONING_TRUST_MANAGER = new TrustManager[]{
             new X509TrustManager() {
                 public X509Certificate[] getAcceptedIssuers() {
-                    //return null;
-                    return new java.security.cert.X509Certificate[]{};
+                    //return null;                    
+                    return new java.security.cert.X509Certificate[0];
                 }
 
                 public void checkClientTrusted(X509Certificate[] certs, String authType) {
