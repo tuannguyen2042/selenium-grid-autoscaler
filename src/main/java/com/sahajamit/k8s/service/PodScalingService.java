@@ -20,6 +20,11 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
 import java.util.concurrent.TimeUnit;
 
+import java.security.cert.CertificateException;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.HostnameVerifier;
+
 @Service
 public class PodScalingService {
     private static final TrustManager[] UNQUESTIONING_TRUST_MANAGER = new TrustManager[]{
