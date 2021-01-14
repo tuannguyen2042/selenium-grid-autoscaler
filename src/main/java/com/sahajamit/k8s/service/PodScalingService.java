@@ -81,6 +81,9 @@ public class PodScalingService {
         Call call = httpClient.newCall(r);
         Response response = call.execute();
         String htmlContent = response.body().string();
+        
+        logger.info("API Server response: ", htmlContent);
+        
         JSONObject jsonObject = new JSONObject(htmlContent);
         return jsonObject.getJSONObject("status").getInt("replicas");
     }
