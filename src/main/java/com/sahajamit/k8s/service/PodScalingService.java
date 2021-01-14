@@ -25,8 +25,7 @@ public class PodScalingService {
     private static final TrustManager[] UNQUESTIONING_TRUST_MANAGER = new TrustManager[]{
             new X509TrustManager() {
                 public X509Certificate[] getAcceptedIssuers() {
-                    //return null;                    
-                    return new java.security.cert.X509Certificate[0];
+                    return new java.security.cert.X509Certificate[]{};
                 }
 
                 public void checkClientTrusted(X509Certificate[] certs, String authType) {
@@ -55,7 +54,13 @@ public class PodScalingService {
     private void init() throws NoSuchAlgorithmException, KeyManagementException {
         logger.info("Grid Console URL: {}", gridUrl);
         logger.info("K8s API URL: {}", k8sApiUrl);
-        httpClient = new OkHttpClient();
+        httpClient = (new OkHttpClient()).setHostnameVerifier(new HostnameVerifier() {
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+              return true;
+            }
+        });
+                                        
         SSLContext sc = SSLContext.getInstance("SSL");
         sc.init(null, UNQUESTIONING_TRUST_MANAGER, null);
         HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
