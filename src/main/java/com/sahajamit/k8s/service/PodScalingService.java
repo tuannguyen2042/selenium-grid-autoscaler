@@ -60,8 +60,7 @@ public class PodScalingService {
         logger.info("Grid Console URL: {}", gridUrl);
         logger.info("K8s API URL: {}", k8sApiUrl);
         logger.info("K8s token: ", k8sToken);
-
-        /*
+        
         httpClient = (new OkHttpClient()).setHostnameVerifier(new HostnameVerifier() {
             @Override
             public boolean verify(String hostname, SSLSession session) {
@@ -72,10 +71,7 @@ public class PodScalingService {
         SSLContext sc = SSLContext.getInstance("SSL");
         sc.init(null, UNQUESTIONING_TRUST_MANAGER, null);
         HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
-        httpClient.setSslSocketFactory(sc.getSocketFactory());
-        */
-        
-        httpClient = new OkHttpClient();
+        httpClient.setSslSocketFactory(sc.getSocketFactory());                        
     }
 
     private int getScale() throws IOException {
