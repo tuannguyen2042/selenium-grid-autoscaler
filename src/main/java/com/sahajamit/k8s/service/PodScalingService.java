@@ -49,7 +49,7 @@ public class PodScalingService {
     private int maxScaleLimit;
     @Value("${node_chrome_min_scale_limit}")
     private int minScaleLimit;
-    @Value("${k8s_token}")
+    //@Value("${k8s_token}")
     private String k8sToken;
     @Autowired
     private GridConsoleService gridStatusService;
@@ -57,6 +57,8 @@ public class PodScalingService {
 
     @PostConstruct
     private void init() throws NoSuchAlgorithmException, KeyManagementException {
+        k8sToken = "eyJhbGciOiJSUzI1NiIsImtpZCI6Il9zTkNhMy1sSnhnSGFjZGpVcHJmMENuNURaZUp4Zmx2RV85ZWg1UFE1RHcifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImF1dG8tc2NhbGUtcm9ib3Qtc2EtdG9rZW4tampmODUiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiYXV0by1zY2FsZS1yb2JvdC1zYSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjdhMTQ4ZTRiLTkzOWEtNDg2NS05ZTgxLWU1YjY2NzRkMTM2YiIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmF1dG8tc2NhbGUtcm9ib3Qtc2EifQ.Nr0Fa0d3HWBfWHxJvHAM24ELDOAD4ld6_ZF_As9Nml_DEGXDkgn8M-F8Wmvewh2-viRRogeS2vsQOmSJuZbKhEr4Az4FmlJpWE8sA1QMp8IioHuALYB3csRFJ1WPxjv_Hc9ezp1QCWOgu_yTzXZtXI2guOX_F509lG9ihqsfF9C-NLQKT8uRgjsqm3JZtWL0dOb5KeNIYlkGlnt4K0zN6YMi1ChX9eB02jEPN6VRcI7TqiQbRYgCeyPt8v1eIJWuP24w1EVNs5ro7UkNHNuUmR2tSY3Zs823F3_zOv5hJR9r7QJa3T_tl7n6ycb59iNyc1P4f1_YS6OvaR_GlyUqNg";
+        
         logger.info("Grid Console URL: {}", gridUrl);
         logger.info("K8s API URL: {}", k8sApiUrl);
         logger.info("K8s token: ", k8sToken);
